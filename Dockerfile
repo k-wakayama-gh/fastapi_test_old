@@ -1,19 +1,22 @@
 # Python image to use.
-FROM python:3.10
+FROM python:3.10-slim
 
 # set the working directory to /app
-WORKDIR /app
+#WORKDIR /app
 
 # copy the requirements file
-COPY ./requirements.txt /app/requirements.txt
+#COPY ./requirements.txt /app/requirements.txt
 
 #RUN pip install --upgrade pip
+
+# copy code
+COPY . ./
 
 # install requirements
 RUN pip install -r requirements.txt
 
 # copy source code to /app
-COPY . /app
+#COPY . /app
 
 # expose
 EXPOSE 8080
