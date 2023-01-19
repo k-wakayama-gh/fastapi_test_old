@@ -33,8 +33,5 @@ async def items(request: Request, id: str):
 
 
 
-#reload option should be false on deployment
-#port=0.0.0.0, port=80 to deploy
 if __name__ == '__main__':
     uvicorn.run('main:app', reload=True)
-

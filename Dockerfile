@@ -15,8 +15,8 @@ RUN pip install -r requirements.txt
 # copy source code to /app
 COPY . /app
 
-# run server
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080"]
-
 # expose
 EXPOSE 8080
+
+# run server
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080"]
