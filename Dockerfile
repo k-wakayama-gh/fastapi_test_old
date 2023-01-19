@@ -1,25 +1,19 @@
 # Python image to use.
 FROM python:3.10-slim
 
-# set the working directory to /app
-#WORKDIR /app
+# allow statements and log messages to appear
+ENV PYTHONUNBUFFERED True
 
-# copy the requirements file
-#COPY ./requirements.txt /app/requirements.txt
-
-#RUN pip install --upgrade pip
-
-# copy code
+# copy local code to container image
+ENV APP_HOME /app
+WORKDIR $APP_HOME
 COPY . ./
 
 # install requirements
 RUN pip install -r requirements.txt
 
-# copy source code to /app
-#COPY . /app
-
 # expose
-EXPOSE 8080
+EXPOSE 80
 
 # run server
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080"]
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "80"]
